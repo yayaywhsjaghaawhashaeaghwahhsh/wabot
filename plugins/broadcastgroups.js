@@ -17,11 +17,11 @@ const anu = {
 			"inviteCode": "mememteeeekkeke",
 			"groupName": "P", 
             "caption": "「 All Group Broadcast 」", 
-            'jpegThumbnail': fs.readFileSync('./src/thumb.jpeg')
+            'jpegThumbnail': global.thumb
 		}
 	}
 }
-  let who = m.mentionedJid && m.mentionedJid[0] ? m.mentionedJid[0] : m.fromMe ? itsu.user.jid : m.sender
+  let who = m.mentionedJid && m.mentionedJid[0] ? m.mentionedJid[0] : m.fromMe ? conn.user.jid : m.sender
   try {
     pp = await conn.getProfilePicture(who)}
     catch (e){
@@ -30,9 +30,9 @@ const anu = {
   let groups = conn.chats.all().filter(v => v.jid.endsWith('g.us') && !v.read_only && v.message && !v.announce).map(v => v.jid)
   let cc = text ? m : m.quoted ? await m.getQuotedObj() : false || m
   let teks = text ? text : cc.text
-  let content = await conn.cMod(m.chat, cc, /bc|broadcast/i.test(text) ? text : text + '\n' + readMore + '「 All Group Broadcast 」')
+  let content = await conn.cMod(m.chat, cc, /bc|broadcast/i.test(teks) ? teks : teks + '\n' + readMore + '「 All Group Broadcast 」')
   conn.reply(m.chat, `_Mengirim pesan broadcast ke ${groups.length} grup_`, m)
-  for (let id of groups) conn.copyNForward(id, content, 'conversation', {quoted: anu, thumbnail: fs.readFileSync('./src/thumb.jpeg'), contextInfo:{externalAdReply: {title: `© ${conn.user.name} || by Relldev` , body: '>///<',sourceUrl: ' https://chat.whatsapp.com/FDz2BQacFiO8onXsmO5IeS', thumbnail: fs.readFileSync('./src/thumb.jpeg')}}} ,true)
+  for (let id of groups) conn.copyNForward(id, content, 'conversation',{quoted: anu, thumbnail: global.thumb, contextInfo:{externalAdReply: {title: `© ${conn.user.name} || by Relldev` , body: '>///<', sourceUrl: 'https://chat.whatsapp.com/FDz2BQacFiO8onXsmO5IeS', thumbnail: global.thumb}}} ,true)
   conn.reply(m.chat, `_Done_`, m)
 }
 handler.help = ['broadcastgroup','bcgc'].map(v => v + ' <teks>')
@@ -55,5 +55,3 @@ const more = String.fromCharCode(8206)
 const readMore = more.repeat(4001)
 
 const randomID = length => require('crypto').randomBytes(Math.ceil(length * .5)).toString('hex').slice(0, length)
-
-
