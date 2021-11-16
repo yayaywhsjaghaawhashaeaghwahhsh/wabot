@@ -1,4 +1,4 @@
-let handler = async (m, { itsu, args, usedPrefix, command }) => {
+let handler = async (m, { conn, args, usedPrefix, command }) => {
 	let teks = args[0]
 	if (!teks) throw `Nomornya?\nContoh: ${usedPrefix + command} 628111111xxxx`
 	if (!teks.includes('x')) throw `Contoh: ${usedPrefix + command} 62811111111xx`
@@ -27,10 +27,10 @@ let handler = async (m, { itsu, args, usedPrefix, command }) => {
 		else if (random_length == 3) rndm = dom1 + dom2 + dom3
 		else if (random_length == 4) rndm = dom1 + dom2 + dom3 + dom4
 		
-		let anu = await itsu.isOnWhatsApp(nomer[0] + i + '@s.whatsapp.net')
+		let anu = await conn.isOnWhatsApp(nomer[0] + i + '@s.whatsapp.net')
 		
 		try {
-			let anu1 = await itsu.getStatus(anu.jid)
+			let anu1 = await conn.getStatus(anu.jid)
 			if (anu1.status == 401 || anu1.status == 'Hey there! I am using WhatsApp.') {
 				no_bio += 'wa.me/' + anu.jid.split`@`[0] + '\n'
 			} else {
