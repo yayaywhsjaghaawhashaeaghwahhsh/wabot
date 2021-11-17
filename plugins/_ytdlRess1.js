@@ -1,6 +1,7 @@
 let limit = 30
 const { servers, yta } = require('../lib/y2mate')
 let handler = async (m, { conn, args, isPrems, isOwner }) => {
+let chat = global.db.data.chats[m.chat]
   if (!args || !args[0]) throw 'Uhm... urlnya mana?'
   let server = (args[1] || 'id4').toLowerCase()
   let { dl_link, thumb, title, filesize, filesizeF} = await yta(args[0], servers.includes(server) ? server : 'id4')
