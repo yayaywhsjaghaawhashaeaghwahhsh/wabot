@@ -20,7 +20,7 @@ let _thumb = {}
  © ${conn.user.name}
 `.trim(), m, false, {
   
-ptt: false, duration: 999999999999, thumbnail: y })
+ptt: false, duration: 999999999999, thumbnail: y , asDocument: chat.useDocument})
 }
 handler.command = /^dlvid$/i
 handler.owner = false
