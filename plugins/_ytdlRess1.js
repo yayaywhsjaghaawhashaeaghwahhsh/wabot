@@ -9,8 +9,8 @@ let handler = async (m, { conn, args, isPrems, isOwner }) => {
  let y = fs.readFileSync('./src/thumb.jpeg')
 
 
-conn.sendMessage(m.chat, `*Title:* ${title}\n*Size:* ${filesizeF}` , 'conversation', {quoted: m, thumbnail: global.thumb2, contextInfo:{externalAdReply: {title: 'Simple WhatsApp bot', body: `© ${conn.user.name}`, sourceUrl: '', thumbnail: y}}})
-  if (!isLimit) conn.sendFile(m.chat, dl_link , 'conversation', {quoted: m, thumbnail: y, contextInfo:{externalAdReply: {title: `${title}`, body: `© ${conn.user.name}`, sourceUrl: '', thumbnail: y}}}, m, false, {ptt: true, duration: 999999999999})
+conn.sendMessage(m.chat, `*Title:* ${title}\n*Size:* ${filesizeF}` , 'conversation', {quoted: m, thumbnail: global.thumb, contextInfo:{externalAdReply: {title: 'Simple WhatsApp bot', body: `© ${conn.user.name}`, sourceUrl: '', thumbnail: y}}})
+  if (!isLimit) conn.sendFile(m.chat, dl_link , `By ${conn.user.name}.mp3`, m, false, {ptt: true, duration: 999999999999})
 }
 handler.command = /^dlmsc$/i
 handler.owner = false
