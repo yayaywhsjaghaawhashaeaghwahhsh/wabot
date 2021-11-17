@@ -15,7 +15,7 @@ let _thumb = {}
   try { _thumb = { thumbnail: await (await fetch(thumb)).buffer() } }
   catch (e) { }
   conn.sendMessage(m.chat, `*Title:* ${title}\n*Size:* ${filesizeF}\n\n_Sending..._` , 'conversation', {quoted: m, thumbnail: y, contextInfo:{externalAdReply: {title: 'Simple WhatsApp bot', body: `© ${conn.user.name}`, sourceUrl: '', thumbnail: y}}})
-  if (!isLimit) conn.sendFile(m.chat, dl_link, title + '.mp4', `
+  if (!isLimit) conn.sendFile(m.chat, dl_link, `By ${conn.user.name}.mp4`, `
  ${title}
  © ${conn.user.name}
 `.trim(), m, false, {
