@@ -335,7 +335,7 @@ module.exports = {
       case 'remove':
         if (chat.welcome) {
           for (let user of participants) {
-            let pp = 'https://telegra.ph/file/69e73ddbc09ae9321148a.png'
+            let pp = 'https://telegra.ph/file/fc5e41b96c7a809b150c1.png'
             try {
               pp = await uploadImage(await (await fetch(await this.getProfilePicture(user))).buffer())
             } catch (e) {
@@ -343,9 +343,8 @@ module.exports = {
               text = (action === 'add' ? (chat.sWelcome || this.welcome || conn.welcome || 'Welcome, @user!').replace(/@subject/g, this.getName(jid)).replace(/@desc/g, groupMetadata.desc) :
                 (chat.sBye || this.bye || conn.bye || 'Bye, @user!')).replace(/@user/g, '@' + user.split('@')[0])
               let img = `https://api.popcat.xyz/welcomecard?background=${bg}&text1=${encodeURIComponent(this.getName(user))}&text2=${action === 'add' ? `Welcome to ${this.getName(jid)}` : `Sayonara ${this.getName(user)}`}&text3=${time}&avatar=${pp}`
-              this.sendFile(jid, img, 'pp.jpg', text, null, false, {
-                contextInfo: {
-                  mentionedJid: [user]
+               this.sendMessage(jid, text , 'conversation', {quoted: null, thumbnail: global.thumb, contextInfo: {
+                  mentionedJid: [user], externalAdReply: {title: 'Welcome Message', body: `© ${this.user.name}`, sourceUrl: '', thumbnail: await (await fetch(pp)).buffer()}
                 }
               })
             }
