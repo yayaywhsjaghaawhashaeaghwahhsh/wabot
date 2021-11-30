@@ -16,7 +16,7 @@ handler.before = async function (m) {
       room.asal = m.chat
       clearTimeout(room.waktu)
       //delete room[room.id].waktu
-      m.reply(`Kirim ke BOT gunting, batu, atau kertas
+      m.reply(`Kirim ke BOT : gunting, batu, atau kertas
 @${room.p.split`@`[0]} dan 
 @${room.p2.split`@`[0]}
 
