@@ -12,10 +12,6 @@ let handler = async (m, { conn, text, isMods, isOwner }) => {
         m.reply('Sedang di process Owner')
     }
 }
-*${conn.user.name}* adalah bot whatsapp yang dibangun dengan Nodejs, *${conn.user.name}* diundang oleh @${m.sender.split`@`[0]}
-    
-ketik *${usedPrefix}menu* untuk melihat daftar perintah`.trim(), '© stikerin', 'Menu', `${usedPrefix}?`, { contextInfo: { mentionedJid: [m.sender] } })
-}
 handler.help = ['join [chat.whatsapp.com]']
 handler.tags = ['premium']
 
