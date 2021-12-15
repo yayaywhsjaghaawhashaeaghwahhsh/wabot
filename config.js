@@ -16,7 +16,8 @@ global.APIs = { // API Prefix
   pencarikode: 'https://pencarikode.xyz',
   LeysCoder: 'https://leyscoders-api.herokuapp.com', 
   Dehan: 'https://dhnjing.xyz',
-  Velgrynd: 'https://api.ichikaa.xyz'
+  Velgrynd: 'https://api.ichikaa.xyz',
+  neoxr: 'https://neoxr-api.herokuapp.com'
 }
 global.APIKeys = { // APIKey Here
   // 'https://website': 'apikey'
@@ -26,6 +27,7 @@ global.APIKeys = { // APIKey Here
   'https://pencarikode.xyz': 'pais',
   'https://leyscoders-api.herokuapp.com': 'dappakntlll',
   'https://dhnjing.xyz': 'e2645065aaced89861b4'
+  'https://neoxr-api.herokuapp.com': 'yntkts'
 }
 
 // Sticker WM
