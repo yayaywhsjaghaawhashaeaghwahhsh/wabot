@@ -26,7 +26,7 @@ global.APIKeys = { // APIKey Here
   'https://api.zeks.xyz': 'Nyarlathotep',
   'https://pencarikode.xyz': 'pais',
   'https://leyscoders-api.herokuapp.com': 'dappakntlll',
-  'https://dhnjing.xyz': 'e2645065aaced89861b4'
+  'https://dhnjing.xyz': 'e2645065aaced89861b4',
   'https://neoxr-api.herokuapp.com': 'yntkts'
 }
 
