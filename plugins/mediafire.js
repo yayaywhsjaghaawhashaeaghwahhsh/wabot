@@ -2,7 +2,7 @@ let fetch = require('node-fetch')
 
 let handler = async (m, { conn, args }) => {
  if (!args[0]) throw 'Uhm..url nya mana?'
- let res = await fetch(API('Velgrynd', '/api/mediafire', { url: args[0] }))
+ let res = await fetch(API('Velgrynd', '/api/doujindesu', { url: args[0] }, 'apikey'))
  if (!res.ok) throw await res.text()
  let json = await res.json()
  let { title, link } = json.result
