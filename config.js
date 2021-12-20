@@ -28,7 +28,7 @@ global.APIKeys = { // APIKey Here
   'https://leyscoders-api.herokuapp.com': 'dappakntlll',
   'https://dhnjing.xyz': 'e2645065aaced89861b4',
   'https://neoxr-api.herokuapp.com': 'yntkts',
-  'https://api.ichikaa.xyz': 'AAgXXQeo'
+  'https://api.ichikaa.xyz': '79lJ9HEA'
 }
 
 // Sticker WM
