@@ -16,7 +16,7 @@ global.APIs = { // API Prefix
   pencarikode: 'https://pencarikode.xyz',
   LeysCoder: 'https://leyscoders-api.herokuapp.com', 
   Dehan: 'https://dhnjing.xyz',
-  Velgrynd: 'https://velgrynd.herokuapp.com',
+  Velgrynd: 'https://api.ichikaa.xyz',
   neoxr: 'https://neoxr-api.herokuapp.com'
 }
 global.APIKeys = { // APIKey Here
