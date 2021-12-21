@@ -1,20 +1,28 @@
+let fs = require('fs')
 let fetch = require('node-fetch')
-let handler = async(m, { conn }) => {
+let { exec } = require('child_process')
 
-    if(m.quoted?.sender) m.mentionedJid.push(m.quoted.sender)
-    if(!m.mentionedJid.length) m.mentionedJid.push(m.sender)
-  let res = await fetch('https://api.waifu.pics/sfw/dance')
-  if (!res.ok) throw await res.text()
-  let json = await res.json()
-  if (!json.url) throw 'Error!'
-
-  conn.sendFile(m.chat,json.url,'h.gif',`@${m.sender.split('@')[0]} danced with ${m.mentionedJid.map((user)=>(user === m.sender)? 'themselves ': `@${user.split('@')[0]}`).join(', ')}`,m,false,
-  {  contextInfo :{mentionedJid : [  ...m.mentionedJid,m.sender ] }})
-  
-
+let handler = async (m, { conn, command }) => {
+	if (m.quoted && m.quoted.sender) m.mentionedJid.push(m.quoted.sender)
+	if (!m.mentionedJid.length) m.mentionedJid.push(m.sender)
+	let res = await fetch('https://api.waifu.pics/sfw/' + command)
+	if (!res.ok) throw await res.text()
+	let json = await res.json()
+	if (json.url) {
+		let { data } = await conn.getFile(json.url)
+		let input = `${command}.gif`
+		let output = `${command}.mp4`
+		await fs.writeFileSync(input, data)
+		exec(`ffmpeg -i ${input} -movflags faststart -pix_fmt yuv420p -vf 'scale=trunc(iw/2)*2:trunc(ih/2)*2' ${output}`, async (e) => {
+			if (e) throw e.toString()
+			await fs.unlinkSync(input)
+			conn.sendFile(m.chat, output, '', `@${m.sender.split('@')[0]} ${command} ${m.mentionedJid.map((user) => user === m.sender ? 'themselves ' : `@${user.split('@')[0]}`).join(', ')}`, m, false, { mimetype: 'video/gif', contextInfo: { mentionedJid: [...m.mentionedJid, m.sender] }})
+			await fs.unlinkSync(output)
+		})
+	} else throw json
 }
-handler.help = ['dance']
-handler.tags = ['internet']
-handler.command = /^dance$/i
+handler.help = ['bite', 'bonk', 'dance', 'lick', 'slap']
+handler.tags = ['fun']
+handler.command = /^(bite|bonk|dance|lick|slap$/i
 
 module.exports = handler
