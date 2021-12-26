@@ -1,7 +1,5 @@
 let { sticker } = require('../lib/sticker')
-
 let uploadFile = require('../lib/uploadFile')
-
 let uploadImage = require('../lib/uploadImage')
 let { webp2png } = require('../lib/webp2mp4')
 
@@ -37,8 +35,8 @@ let handler = async (m, { conn, text }) => {
 	}
 }
 
-handler.help = ['wm <packname>|<author>']
+handler.help = ['wm2 <packname>|<author>']
 handler.tags = ['sticker']
-handler.command = /^wm$/i
+handler.command = /^wm2$/i
 
 module.exports = handler
