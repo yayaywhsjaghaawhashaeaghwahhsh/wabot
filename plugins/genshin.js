@@ -1,6 +1,6 @@
 let fetch = require('node-fetch')
 let handler = async(m, { conn, text }) => {
-   let res = await fetch(API('Velgrynd', '/api/genshinweapon', { weapon: text }, 'apikey'))
+   let res = await fetch(API('Velgrynd', '/api/genshin', { chara: text }, 'apikey'))
    if (!res.ok) throw await res.text()
    let json = await res.json()
    let { name, quote, cv, description, image, city, url, element, weapon, rating } = json.result
