@@ -3,8 +3,8 @@ let scraper = require('@bochilteam/scraper')
 let handler = async (m, { conn, args }) => {
   if (!args[0]) throw 'Uhm...url nya mana?'
   await m.reply('Loading...')
-  if (args[0].includes('mobile')) args[0].replace('mobile', '')
-  let res = await scraper.twitterdl(args[0])
+  let url = args[0].includes('mobile') ? args[0].replace('mobile.', '') : args[0]
+  let res = await scraper.twitterdl(url)
   if (res[0].isVideo == true) return await conn.sendFile(m.chat, res[0].url, '', '', m)
   for (let i = 0; i < res.length; i++) {
     conn.sendFile(m.chat, res[i].url, '', '', m)
